@@ -40,7 +40,7 @@
 		function send(){
 			var x = {"Value": document.getElementById('name').value};
 			axios
-			.post('https://localhost:5001/MeuPoste', x)
+			.post('https://salvation-hl-cf.azurewebsites.net/MeuPoste', x)
 			.then(response => {
 			  document.getElementById("counter").innerHTML = response.data;
 			  document.getElementById('name').value = "";
