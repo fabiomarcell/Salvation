@@ -50,9 +50,10 @@
 		
 		window.onload = function(){  
 			send()
+			setInterval(function() {
+			   send();
+			}, 60 * 2 * 1000);
 		}
-		setInterval(function() {
-		   send();
-		}, 60 * 2 * 1000);
+		
 	</script>
 </html>
