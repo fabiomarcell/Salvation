@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <title>Salvation</title>
+    </head>
+	<style>
+		@font-face{
+			font-family: "Horroroid";
+			src: url('HorroroidExpanded-lyaw.otf');
+		}
+		html{
+			font-family: "Horroroid";
+		}
+		.btn{
+			width:55px; height: 32px; margin-top:4px; border: 3px solid #C3C3C3; background-color:white;
+			border-radius: 3px;
+		}
+		#name{
+			border: 2px solid #C3C3C3; background-color:white;
+			border-radius: 2px;
+			outline: 3px solid #CCC;
+			outline-offset: 1px;
+			font-family: "Horroroid";
+		}
+	</style>
+    <body>
+        <div style="heigth:100%; width:100%;">
+			<img src="salvation.png" style="margin:0 auto; display:block;">
+			<br><br>
+			<div style="display: flex; justify-content: center;">
+				<input id="name" style="height: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;
+				<button class="btn" onclick="send()">&nbsp;</button><br>
+			</div>
+			<h1 id="counter" style="display: flex; justify-content: center; font-size:70px;"></h1>
+        </div>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    </body>
+	<script>
+		function send(){
+			var x = {"Value": document.getElementById('name').value};
+			axios
+			.post('https://localhost:5001/MeuPoste', x)
+			.then(response => {
+			  document.getElementById("counter").innerHTML = response.data;
+			  document.getElementById('name').value = "";
+			})
+			.catch(error => console.error(error))
+		}
+		
+		window.onload = function(){  
+			send()
+		}
+	</script>
+</html>
